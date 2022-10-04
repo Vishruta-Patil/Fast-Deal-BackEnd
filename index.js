@@ -1,14 +1,15 @@
 const express = require("express");
 const connectDB = require("./db/db.connect");
 const cors = require("cors");
-const app = express();
+const corsOptions = require("./utils/utilsConfig");
 
 const auth = require("./routes/auth");
 const users = require("./routes/user");
 const admin = require("./routes/admin");
 
+const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 connectDB();
 
 app.get("/", (req, res) => {
