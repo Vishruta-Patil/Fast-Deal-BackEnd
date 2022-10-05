@@ -28,6 +28,7 @@ exports.getAllUsers = async (req, res) => {
 // @access  Private
 exports.getTransactions = async (req, res) => {
   const accountNumber  = req._id;
+  console.log(accountNumber)
   try {
     const transaction = await Transaction.find({ accountNumber });
     res.json({ success: true, transaction });
@@ -99,7 +100,8 @@ exports.login = async (req, res) => {
     }
 
     const user = await User.find({ email });
-    const token = jwtToken({ _id: user.accountNo });
+    console.log(user[0].accountNo)
+    const token = jwtToken({ _id: user[0].accountNo });
     const isPasswordValidated = await validatePassword(
       password,
       user[0].password
