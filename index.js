@@ -22,6 +22,6 @@ app.use("/admin", admin);
 
 const port = process.env.PORT || 8000;
 
-app.listen(port, () => {
+app.listen(8000, () => {
   console.log("server has started");
 });

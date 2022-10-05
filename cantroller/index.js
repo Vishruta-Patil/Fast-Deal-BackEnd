@@ -27,7 +27,7 @@ exports.getAllUsers = async (req, res) => {
 // @route   GET api/users/transactions
 // @access  Private
 exports.getTransactions = async (req, res) => {
-  const { accountNumber } = req.body;
+  const accountNumber  = req._id;
   try {
     const transaction = await Transaction.find({ accountNumber });
     res.json({ success: true, transaction });
